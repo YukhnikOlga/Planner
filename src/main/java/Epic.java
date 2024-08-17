@@ -12,16 +12,16 @@ public class Epic extends Task {
         return subtasks;
     }
 
-        @Override
-        public boolean matches(String query) {
-            for (String subtask : subtasks) {
-                if (subtask.contains(query)) {
-                    return true;
-                }
-                return false;
+    @Override
+    public boolean matches(String query) {
+        for (String subtask : subtasks) {
+            if (subtask.contains(query)) {
+                return true;
             }
             return false;
         }
+        return false;
     }
+}
 
 // для Epic — циклом перебирая подзадачи и также проверяя каждую через if.
