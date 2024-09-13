@@ -217,4 +217,30 @@ public class TodosTest {
         Task[] actual = todos.search(query);
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSearchSomeEpics() {
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        String[] subtasks2 = {"Шахматы", "Шашки", "Нарды"};
+        String[] subtasks3 = {"Июнь", "Июль", "Август"};
+        String[] subtasks4 = {"Футбол", "Бокс", "Шахматы"};
+        String[] subtasks5 = {"Сентябрь", "Октябрь", "Ноябрь"};
+        Epic epic = new Epic(555, subtasks);
+        Epic epic2 = new Epic(666, subtasks2);
+        Epic epic3 = new Epic(777, subtasks3);
+        Epic epic4 = new Epic(999, subtasks4);
+        Epic epic5 = new Epic(111, subtasks5);
+        Todos todos = new Todos();
+
+        todos.add(epic);
+        todos.add(epic2);
+        todos.add(epic3);
+        todos.add(epic4);
+        todos.add(epic5);
+        String query = "Шахматы";
+
+        Task[] expected = {epic2, epic4};
+        Task[] actual = todos.search(query);
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
